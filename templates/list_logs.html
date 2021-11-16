@@ -1,0 +1,55 @@
+{% extends 'lights.html' %}
+
+{% load static %}
+
+{% block content %}
+<body id="bg" style="background-image: url('{% static "images/logs.jpg"%}');">
+    <br/><br/><br/><br/>
+
+    <div class="center">
+        <h1 class="opaqueWhite" style="text-align: center">Logs</h1>
+    </div>
+    <br/><br/><br/><br/>
+
+        <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); width: 1000px">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+                <th scope="col">Place</th>
+                <th scope="col">Date, MM/dd/yyyy</th>
+                 <th scope="col">Time, HH:mm:ss</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>ul.Kozanowska 46</td>
+                <td>10/11/2021</td>
+                <td>11:42:35</td>
+
+            </tr>
+            <tr>
+                <th scope="row">1</th>
+                <td>ul.Kozanowska 46</td>
+                <td>11/11/2021</td>
+                <td>09:34:24</td>
+
+            </tr>
+            <tr>
+                <th scope="row">1</th>
+                <td>ul.Kozanowska 46</td>
+                <td>12/11/2021</td>
+                <td>23:23:24</td>
+            </tr>
+          </tbody>
+        </table>
+        <br/>
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+          <div class="btn-group mr-2" role="group" aria-label="First group">
+             <a href="{%  url 'home' %}" class="btn btn-secondary" >BACK</a>
+          </div>
+
+        </div>
+
+</body>
+{% endblock %}
