@@ -12,12 +12,12 @@ from django.core.exceptions import ValidationError
 #          default = uuid.uuid4,
 #          editable = False)
 
-# class UserAccount(models.Model):
-#     username = models.CharField('User Name', max_length=50)
-#     f_name = models.CharField('First Name', max_length=50)
-#     l_name = models.CharField('Last Name', max_length=50)
-#     email = models.EmailField('Email', blank=True)
-#     phone = models.CharField('Phone Number', max_length=15, blank=True)
+class UserAccount(models.Model):
+    username = models.CharField('User Name', max_length=50)
+    f_name = models.CharField('First Name', max_length=50)
+    l_name = models.CharField('Last Name', max_length=50)
+    email = models.EmailField('Email', blank=True)
+    phone = models.CharField('Phone Number', max_length=15, blank=True)
 #
 # class Location(models.Model):
 #     country = models.CharField('Country', max_length=50)

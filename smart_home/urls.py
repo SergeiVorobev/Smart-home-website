@@ -9,7 +9,5 @@ urlpatterns =[
      path('climate/', views.all_climate, name="climate"),
      path('lights/', views.all_lights, name="lights"),
      path('logs/', views.all_logs, name="logs"),
-
      path('settings/', views.settings, name="settings"),
-
 ]
