@@ -1,13 +1,56 @@
 {% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+
 
 {% block content %}
-    <br/> <br/>
-<div class="center">
-    <br/> <br/>
-    <h3>Smart home system</h3>
-    <br/><br/><br/>
 
-</div>
+    <div class="item1" style="background-image: url('{% static "images/login.jpg"%}'); background-position:center top; height:850px; background-color: rgba(255, 255, 255, 0.8);">
+        <div class="d-flex justify-content-between">
+            <section><img style="widows: inherit" src="{% static "images/logo.jpg"%}"  alt="" /></section>
+            <section>
+                <div class="table-responsive col-lg-12">
+                    <h2 class="text-center" style="color:cornflowerblue">Logs</h2>
+                    <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8)">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Place</th>
+                            <th scope="col">Date, MM/dd/yyyy</th>
+                            <th scope="col">Time, HH:mm:ss</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>ul.Kozanowska 46</td>
+                            <td>10/11/2021</td>
+                            <td>11:42:35</td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>ul.Kozanowska 46</td>
+                            <td>11/11/2021</td>
+                            <td>09:34:24</td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>ul.Kozanowska 46</td>
+                            <td>12/11/2021</td>
+                            <td>23:23:24</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+        </div>
+    </div>
+
+
+    </div>
 
 
 {% endblock %}

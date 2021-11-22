@@ -67,17 +67,17 @@ def logoutUser(request):
 @login_required(login_url='login')
 def all_climate(request):
     # climate_list = Climate.objects.all().order_by('event_date')
-    return render(request, 'list_climate.html')
+    return render(request, 'climate.html')
 
 @login_required(login_url='login')
 def all_lights(request):
     # climate_list = Climate.objects.all().order_by('event_date')
-    return render(request, 'list_lights.html')
+    return render(request, 'lights.html')
 
 @login_required(login_url='login')
 def all_logs(request):
     # climate_list = Climate.objects.all().order_by('event_date')
-    return render(request, 'list_logs.html')
+    return render(request, 'logs.html')
 
 @login_required(login_url='login')
 def settings(request):
