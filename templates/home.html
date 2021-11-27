@@ -4,18 +4,6 @@
 
 {% block content %}
 
-    <style>
-    .my-custom-scrollbar {
-    position: relative;
-    height: 300px;
-    overflow: auto;
-    }
-    .table-wrapper-scroll-y {
-    display: block;
-    }
-    </style>
-
-
     <div class="item1" style="background-image: url('{% static "images/login.jpg"%}');
           background-position: center center;
           background-repeat: no-repeat;
@@ -50,28 +38,11 @@
                             <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); align-content: center">
                                 <thead>
                                 <tr>
-                                  <th scope="col">#</th>
-                                    <th scope="col">Place</th>
-                                     <th scope="col">Celcious</th>
+                                 <th scope="col">Celcious</th>
+                                 <th scope="col">22</th>
                                 </tr>
                               </thead>
-                              <tbody>
-                                <tr>
-                                  <th scope="row">1</th>
-                                  <td>Living room</td>
-                                  <td>22</td>
-                                </tr>
-                                <tr>
-                                  <th scope="row">2</th>
-                                  <td>Bedroom</td>
-                                  <td>23</td>
-                                </tr>
-                                <tr>
-                                  <th scope="row">3</th>
-                                  <td>Garage</td>
-                                  <td>20</td>
-                                </tr>
-                              </tbody>
+
                             </table>
 
                     </div>
@@ -160,9 +131,9 @@
                       <div class="col">
                           <h2 class="text-center" style="color:#232588">Logs</h2>
 
-                          <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                          <div class="table-wrapper-scroll-y my-custom-scrollbar" style=" position: relative; height: 300px; overflow: auto; ">
 {#                              <h2 class="text-center" style="color:#232588">Logs</h2>#}
-                              <table class="table table-hover table-striped mb-1 table-bordered" style="background-color: rgba(255, 255, 255, 0.8); align-content: center">
+                              <table class="table table-hover table-striped mb-1 table-bordered" style="background-color: rgba(255, 255, 255, 0.8); align-content: center; display: block;">
                               <thead>
                                 <tr>
                                   <th scope="col">#</th>
