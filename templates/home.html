@@ -4,6 +4,18 @@
 
 {% block content %}
 
+    <style>
+    .my-custom-scrollbar {
+    position: relative;
+    height: 300px;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }
+    </style>
+
+
     <div class="item1" style="background-image: url('{% static "images/login.jpg"%}');
           background-position: center center;
           background-repeat: no-repeat;
@@ -131,9 +143,8 @@
                       <div class="col">
                           <h2 class="text-center" style="color:#232588">Logs</h2>
 
-                          <div class="table-wrapper-scroll-y my-custom-scrollbar" style=" position: relative; height: 300px; overflow: auto; ">
-{#                              <h2 class="text-center" style="color:#232588">Logs</h2>#}
-                              <table class="table table-hover table-striped mb-1 table-bordered" style="background-color: rgba(255, 255, 255, 0.8); align-content: center; display: block;">
+                          <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                              <table class="table table-hover table-striped mb-1 table-bordered" style="background-color: rgba(255, 255, 255, 0.8); align-content: center">
                               <thead>
                                 <tr>
                                   <th scope="col">#</th>
