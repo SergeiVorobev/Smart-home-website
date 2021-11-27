@@ -83,3 +83,8 @@ def all_logs(request):
 def settings(request):
     # climate_list = Climate.objects.all().order_by('event_date')
     return render(request, 'settings.html')
+
+@login_required(login_url='login')
+def personal(request):
+    # climate_list = Climate.objects.all().order_by('event_date')
+    return render(request, 'personal.html')

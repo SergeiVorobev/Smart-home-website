@@ -10,4 +10,6 @@ urlpatterns =[
      path('lights/', views.all_lights, name="lights"),
      path('logs/', views.all_logs, name="logs"),
      path('settings/', views.settings, name="settings"),
+     path('personal/', views.personal, name="person"),
+
 ]

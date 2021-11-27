@@ -4,16 +4,25 @@
 
 {% block content %}
 
-    <div class="d-flex justify-content-between" style="background-image: url('{% static "images/set.jpg"%}');
+    <div class="d-flex justify-content-between" style="
+            {#background-image: url('{% static "images/set.jpg"%}');#}
            background-position: center center;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
-            background-color: #464646;">
+                                background-color: honeydew;
+">
 
             <section>
+{#                <div class="btn-group" role="group" aria-label="Basic example">#}
+{#                  <button type="button" class="btn btn-primary">PERSONAL</button>#}
+{#                  <button type="button" class="btn btn-primary">ADDRESS</button>#}
+{#                  <button type="button" class="btn btn-primary">PASSWORD</button>#}
+{#                </div>#}
+{#                {% block content %}#}
+{#                {% endblock %}#}
                 <div class="table-responsive col-lg-12">
-                    <h2 class="text-center">Person</h2>
+                    <h2 class="text-center">Personal</h2>
                     <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); ">
                       <thead>
                         <tr>
