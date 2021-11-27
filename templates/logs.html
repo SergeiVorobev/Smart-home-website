@@ -4,43 +4,77 @@
 
 {% block content %}
 
+    <style>
+    .my-custom-scrollbar {
+    position: relative;
+    height: 300px;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }
+    </style>
+
     <div class="text-center" style="background-image: url('{% static "images/logs.jpg"%}'); background-position:center top; height:801px; background-color: rgba(255, 255, 255, 0.8);">
 
         <section>
-            <div class="table-responsive col-lg-8">
+            <div class>
                 <h2 class="text-center">Logs</h2>
-                 <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8)">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                        <th scope="col">Place</th>
-                        <th scope="col">Date, MM/dd/yyyy</th>
-                         <th scope="col">Time, HH:mm:ss</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>ul.Kozanowska 46</td>
-                        <td>10/11/2021</td>
-                        <td>11:42:35</td>
+                <div class="table-wrapper-scroll-y my-custom-scrollbar">
+    {#                <h2 class="text-center">Logs</h2>#}
+                     <table class="table table-hover table-striped mb-1 table-bordered" style="background-color: rgba(255, 255, 255, 0.8)">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                            <th scope="col">Place</th>
+                            <th scope="col">Date, MM/dd/yyyy</th>
+                             <th scope="col">Time, HH:mm:ss</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                       <tr>
+                            <th scope="row">6</th>
+                            <td>ul.Kozanowska 46</td>
+                            <td>16/11/2021</td>
+                            <td>21:23:24</td>
 
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>ul.Kozanowska 46</td>
-                        <td>11/11/2021</td>
-                        <td>09:34:24</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5</th>
+                            <td>ul.Kozanowska 46</td>
+                            <td>15/11/2021</td>
+                            <td>09:24:00</td>
 
-                    </tr>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>ul.Kozanowska 46</td>
-                        <td>12/11/2021</td>
-                        <td>23:23:24</td>
-                    </tr>
-                  </tbody>
-                </table>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>ul.Kozanowska 46</td>
+                            <td>14/11/2021</td>
+                            <td>15:45:03</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>ul.Kozanowska 46</td>
+                            <td>12/11/2021</td>
+                            <td>23:23:24</td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>ul.Kozanowska 46</td>
+                            <td>11/11/2021</td>
+                            <td>09:34:24</td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>ul.Kozanowska 46</td>
+                            <td>10/11/2021</td>
+                            <td>11:42:35</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
             </div>
         </section>
     </div>

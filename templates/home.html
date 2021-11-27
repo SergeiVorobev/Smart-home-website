@@ -2,14 +2,219 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
 
-
 {% block content %}
+
+    <style>
+    .my-custom-scrollbar {
+    position: relative;
+    height: 300px;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }
+    </style>
+
 
     <div class="item1" style="background-image: url('{% static "images/login.jpg"%}'); background-position:center top; height:850px; background-color: rgba(255, 255, 255, 0.8);">
         <div class="d-flex justify-content-between">
             <section>
+                <div class="container">
+                  <div class="row" style="vertical-align: middle">
+                    <div class="col">
+                        <img src="{% static "images/login.jpg" %}" alt="My image"/>
+                    </div>
+                    <div class="col" >
+                        <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); align-content: center">
+                          <thead>
+                            <tr style="horiz-align: center">
+                                <th scope="col">Security System</th>
+                                <th scope="col">
+                                   <div class="form-check form-switch">
+                                      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                                      <label class="form-check-label" for="flexSwitchCheckDefault"
+                                        >OFF/ON</label>
+                                    </div>
+                                </th>
+                            </tr>
+                          </thead>
+
+                        </table>
+                        <br>
+                        <h2 class="text-center" style="color:#232588">Climate</h2>
+                            <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); align-content: center">
+                                <thead>
+                                <tr>
+                                  <th scope="col">#</th>
+                                    <th scope="col">Place</th>
+                                     <th scope="col">Celcious</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th scope="row">1</th>
+                                  <td>Living room</td>
+                                  <td>22</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">2</th>
+                                  <td>Bedroom</td>
+                                  <td>23</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">3</th>
+                                  <td>Garage</td>
+                                  <td>20</td>
+                                </tr>
+                              </tbody>
+                            </table>
+
+                    </div>
+                </div>
+             <br><br>
+                  <div class="row" style="vertical-align: middle">
+
+                      <div class="col">
+                          <h2 class="text-center" style="color:#232588">Lights</h2>
+                           <div class="row">
+                                <div class="col">
+                                  <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); align-content: center">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">#</th>
+                                        <th scope="col">Place
+                                        </th>
+                                        <th scope="col">Light, ON/OFF</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">1</th>
+                                      <td>Living room</td>
+                                      <td>
+                                          <div class="form-check form-switch">
+                                              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                                          </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">2</th>
+                                      <td>Bedroom</td>
+                                      <td>
+                                          <div class="form-check form-switch">
+                                              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                                          </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">3</th>
+                                      <td>Cabinet</td>
+                                      <td>
+                                          <div class="form-check form-switch">
+                                              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                                          </div>
+                                      </td>
+                                    </tr>
+                                      <tr>
+                                          <th scope="row">3</th>
+                                          <td>Kitchen</td>
+                                          <td>
+                                              <div class="form-check form-switch">
+                                                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                                              </div>
+                                          </td>
+                                        </tr>
+                                    <tr class="blank_row">
+                                        <td colspan="3"></td>
+                                    </tr>
+                                    <tr></tr>
+                                  </tbody>
+                                </table>
+                             </div>
+
+                             <div class="col">
+                               <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); align-content: center">
+                                  <thead>
+                                    <tr style="horiz-align: center">
+                                        <th scope="col">
+                                            <button type="button" style="background-color:#ff6600" class="btn btn-danger">All ON</button>
+                                        </th>
+                                        <th scope="col">
+                                            <button type="button"  class="btn btn-secondary">All OFF</button>
+                                        </th>
+
+                                    </tr>
+
+                                </table>
+
+                            </div>
+                           </div>
+
+                      </div>
+
+                      <div class="col">
+                          <h2 class="text-center" style="color:#232588">Logs</h2>
+
+                          <div class="table-wrapper-scroll-y my-custom-scrollbar">
+{#                              <h2 class="text-center" style="color:#232588">Logs</h2>#}
+                              <table class="table table-hover table-striped mb-1 table-bordered" style="background-color: rgba(255, 255, 255, 0.8); align-content: center">
+                              <thead>
+                                <tr>
+                                  <th scope="col">#</th>
+                                    <th scope="col">Place</th>
+                                    <th scope="col">Date, MM/dd/yyyy</th>
+                                     <th scope="col">Time, HH:mm:ss</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                    <th scope="row">6</th>
+                                    <td>ul.Kozanowska 46</td>
+                                    <td>16/11/2021</td>
+                                    <td>21:23:24</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">5</th>
+                                    <td>ul.Kozanowska 46</td>
+                                    <td>15/11/2021</td>
+                                    <td>09:24:00</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>ul.Kozanowska 46</td>
+                                    <td>14/11/2021</td>
+                                    <td>15:45:03</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>ul.Kozanowska 46</td>
+                                    <td>12/11/2021</td>
+                                    <td>23:23:24</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>ul.Kozanowska 46</td>
+                                    <td>11/11/2021</td>
+                                    <td>09:34:24</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>ul.Kozanowska 46</td>
+                                    <td>10/11/2021</td>
+                                    <td>11:42:35</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                      </div>
 
 
+                  </div>
+                </div>
             </section>
         </div>
     </div>
