@@ -88,3 +88,11 @@ def settings(request):
 def personal(request):
     # climate_list = Climate.objects.all().order_by('event_date')
     return render(request, 'personal.html')
+
+@login_required(login_url='login')
+def edit_profile(request):
+    return render(request, 'edit_profile.html')
+
+@login_required(login_url='login')
+def edit_address(request):
+    return render(request, 'edit_address.html')

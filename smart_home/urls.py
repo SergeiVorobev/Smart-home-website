@@ -11,5 +11,7 @@ urlpatterns =[
      path('logs/', views.all_logs, name="logs"),
      path('settings/', views.settings, name="settings"),
      path('personal/', views.personal, name="person"),
+     path('edit_profile/', views.edit_profile, name="edit_profile"),
+     path('edit_address/', views.edit_address, name="edit_address"),
 
 ]
