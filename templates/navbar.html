@@ -18,8 +18,9 @@
 
 
           </div>
-            <span id="hello-msg">Hello, {{ request.user }} </span>
-            <span><a href="{% url 'logout' %}">Logout</a></span>
+
+        <span id="hello-msg">Hello, {{ request.user }} &nbsp;&nbsp;&nbsp;</span>
+        <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a>
 
 
     </div>

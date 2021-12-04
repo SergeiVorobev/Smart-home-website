@@ -1,10 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
 
-</body>
-</html>
+{% block content %}
+
+    <div class="d-flex justify-content-between" style="
+            {#background-image: url('{% static "images/set.jpg"%}');#}
+           background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-color: honeydew;">
+
+            <section>
+
+                <div class="table-responsive col-lg-12">
+                    <h2 class="text-center">Personal</h2>
+                    <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); ">
+                      <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First name</th>
+                            <th scope="col">Last name</th>
+                            <th scope="col">Email</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>{{ request.firstname }}</td>
+                          <td>{{ request.lastname }}</td>
+                          <td>{{ request.email }}</td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                    <br>
+                    <button type="button" href="{% url 'edit_profile' %}" class="btn btn-secondary">Edit profile</button>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+
+{% endblock %}
+

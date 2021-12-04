@@ -3,9 +3,11 @@ import calendar
 from calendar import HTMLCalendar
 from datetime import datetime
 # from .models import Device
+from django.urls import reverse_lazy
+from .models import UserAccount
 from .forms import CreateUser
 from django.http import HttpResponseRedirect, HttpResponse
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -29,7 +31,7 @@ def registration(request):
     else:
         form = CreateUser()
 
-        if request.method=='POST':
+        if request.method == 'POST':
             form = CreateUser(request.POST)
             if form.is_valid():
                 form.save()
@@ -39,6 +41,23 @@ def registration(request):
 
         context = {'form': form}
         return render(request, 'registration.html', context)
+
+@login_required(login_url='login')
+def edit_user(request):
+
+    form = CreateUser()
+
+    if request.method == 'POST':
+        form = CreateUser(request.POST)
+        if form.is_valid():
+            form.save()
+            user = form.cleaned_data.get('username')
+            messages.success(request, 'Account was updated for ' + user)
+            return redirect('settings')
+
+    context = {'form': form}
+    return render(request, 'edit_profile.html', context)
+
 
 def loginPage(request):
     if request.user.is_authenticated:
@@ -82,16 +101,23 @@ def all_logs(request):
 @login_required(login_url='login')
 def settings(request):
     # climate_list = Climate.objects.all().order_by('event_date')
-    return render(request, 'settings.html')
+    form = CreateUser(request.GET)
+
+    user = request.user
+    last_name = request.POST.get('last_name')
+    email = form.data.get('email')
+
+    return render(request, 'settings.html',
+                  {"username": user,
+                    "l_name": last_name,
+                    "e_mail": email,
+                    })
 
 @login_required(login_url='login')
 def personal(request):
-    # climate_list = Climate.objects.all().order_by('event_date')
+    # climate_list = Climate.objects.all()
     return render(request, 'personal.html')
 
-@login_required(login_url='login')
-def edit_profile(request):
-    return render(request, 'edit_profile.html')
 
 @login_required(login_url='login')
 def edit_address(request):

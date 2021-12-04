@@ -16,7 +16,7 @@
             <section>
 
                 <div class="table-responsive col-lg-12">
-                    <h2 class="text-center">Personal</h2>
+                    <h2 class="text-center"style="color:#232588">Personal</h2>
                     <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); ">
                       <thead>
                         <tr>
@@ -29,22 +29,24 @@
                       <tbody>
                         <tr>
                           <th scope="row">1</th>
-                          <td>{{ request.firstname }}</td>
-                          <td>{{ request.lastname }}</td>
-                          <td>{{ request.email }}</td>
+                          <td>{{ username}}</td>
+                          <td>{{ l_name }}</td>
+                          <td>{{ e_mail }}</td>
                         </tr>
 
                       </tbody>
                     </table>
                     <br>
-                    <button type="button" href="{% url 'edit_profile' %}" class="btn btn-secondary">Edit profile</button>
+{#                    <a class="nav-link" href="{% url 'edit_profile' %}"><i class="fas fa-cog"></i><br>Edit profile</a>#}
+
+{#                    <button type="button" href="{% url 'edit_profile' %}" class="btn btn-secondary">Edit profile</button>#}
 
                 </div>
 
             </section>
             <section>
                 <div class="table-responsive col-lg-12">
-                    <h2 class="text-center">Address</h2>
+                    <h2 class="text-center" style="color:#232588">Address</h2>
                     <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); ">
                         <thead>
                         <tr>
@@ -67,7 +69,7 @@
                       </tbody>
                     </table>
                     <br>
-                    <button type="button" href="{% url 'edit_address' %}" class="btn btn-secondary">Edit Address</button>
+{#                    <button type="button" href="{% url 'edit_address' %}" class="btn btn-secondary">Edit Address</button>#}
                 </div>
             </section>
 

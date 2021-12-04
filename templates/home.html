@@ -32,9 +32,9 @@
                         <img src="{% static "images/house.jpg" %}" alt="My image"/>
                     </div>
                     <div class="col" >
-                        <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); align-content: center">
+                        <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); text-align: center">
                           <thead>
-                            <tr style="horiz-align: center">
+                            <tr>
                                 <th scope="col">Security System</th>
                                 <th scope="col">
                                    <div class="form-check form-switch">
@@ -48,12 +48,12 @@
 
                         </table>
                         <br>
-                        <h2 class="text-center" style="color:#232588">Climate</h2>
-                            <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); align-content: center">
+                        <h2 class="text-center" style="color:#232588">Humidity</h2>
+                            <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); text-align: center">
                                 <thead>
                                 <tr>
-                                 <th scope="col">Celcious</th>
-                                 <th scope="col">22</th>
+                                 <th scope="col">60</th>
+                                 <th scope="col">%</th>
                                 </tr>
                               </thead>
 
@@ -68,62 +68,64 @@
                           <h2 class="text-center" style="color:#232588">Lights</h2>
                            <div class="row">
                                 <div class="col">
-                                  <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); align-content: center">
-                                  <thead>
-                                    <tr>
-                                      <th scope="col">#</th>
-                                        <th scope="col">Place
-                                        </th>
-                                        <th scope="col">Light, ON/OFF</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <th scope="row">1</th>
-                                      <td>Living room</td>
-                                      <td>
-                                          <div class="form-check form-switch">
-                                              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-                                          </div>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <th scope="row">2</th>
-                                      <td>Bedroom</td>
-                                      <td>
-                                          <div class="form-check form-switch">
-                                              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-                                          </div>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <th scope="row">3</th>
-                                      <td>Cabinet</td>
-                                      <td>
-                                          <div class="form-check form-switch">
-                                              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-                                          </div>
-                                      </td>
-                                    </tr>
-                                      <tr>
-                                          <th scope="row">4</th>
-                                          <td>Kitchen</td>
-                                          <td>
-                                              <div class="form-check form-switch">
-                                                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-                                              </div>
-                                          </td>
-                                        </tr>
-                                    <tr class="blank_row">
-                                        <td colspan="3"></td>
-                                    </tr>
-                                    <tr></tr>
-                                  </tbody>
-                                </table>
+                                   <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                       <table class="table table-hover table-striped mb-1 table-bordered" style="background-color: rgba(255, 255, 255, 0.8); text-align: center">
+                                          <thead>
+                                            <tr>
+                                              <th scope="col">#</th>
+                                                <th scope="col">Place
+                                                </th>
+                                                <th scope="col">Light, ON/OFF</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr>
+                                              <th scope="row">1</th>
+                                              <td>Living room</td>
+                                              <td>
+                                                  <div class="form-check form-switch d-flex justify-content-center">
+                                                      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                                                  </div>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <th scope="row">2</th>
+                                              <td>Bedroom</td>
+                                              <td>
+                                                  <div class="form-check form-switch d-flex justify-content-center">
+                                                      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                                                  </div>
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              <th scope="row">3</th>
+                                              <td>Cabinet</td>
+                                              <td>
+                                                  <div class="form-check form-switch d-flex justify-content-center">
+                                                      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                                                  </div>
+                                              </td>
+                                            </tr>
+                                              <tr>
+                                                  <th scope="row">4</th>
+                                                  <td>Kitchen</td>
+                                                  <td>
+                                                      <div class="form-check form-switch d-flex justify-content-center">
+                                                          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                                                      </div>
+                                                  </td>
+                                                </tr>
+                                            <tr class="blank_row">
+                                                <td colspan="3"></td>
+                                            </tr>
+                                            <tr></tr>
+                                          </tbody>
+                                        </table>
+                                   </div>
                              </div>
 
                              <div class="col">
-                               <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); align-content: center">
+                               <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); text-align: center">
                                   <thead>
                                     <tr style="horiz-align: center">
                                         <th scope="col">
