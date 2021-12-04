@@ -15,7 +15,20 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required(login_url='login')
 def home(request):
-    return render(request, 'home.html')
+
+    # Get current year
+    now = datetime.now()
+    year_ = now.strftime('%Y')
+    date_ = now.strftime("%d %B %Y, ")
+    hours = now.strftime('%H')
+    hours = int(hours) + 1
+    hours = str(hours)
+    time_ = hours + now.strftime(':%M:%S')
+    return render(request, 'home.html', {
+       'date': date_,
+        'year': year_,
+        'time' : time_,
+    })
 
 
 # @login_required(login_url='login')

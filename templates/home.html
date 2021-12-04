@@ -32,6 +32,12 @@
                         <img src="{% static "images/house.jpg" %}" alt="My image"/>
                     </div>
                     <div class="col" >
+                        <div class="center">
+                            <p>
+                        Date and time: {{ date }} {{ time }}
+                        </p>
+                            <br>
+                        </div>
                         <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); text-align: center">
                           <thead>
                             <tr>
@@ -48,6 +54,7 @@
 
                         </table>
                         <br>
+
                         <h2 class="text-center" style="color:#232588">Humidity</h2>
                             <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); text-align: center">
                                 <thead>
@@ -148,7 +155,7 @@
                           <h2 class="text-center" style="color:#232588">Logs</h2>
 
                           <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                              <table class="table table-hover table-striped mb-1 table-bordered" style="background-color: rgba(255, 255, 255, 0.8); align-content: center">
+                              <table class="table table-hover table-striped mb-1 table-bordered" style="background-color: rgba(255, 255, 255, 0.8); text-align: center">
                               <thead>
                                 <tr>
                                   <th scope="col">#</th>
