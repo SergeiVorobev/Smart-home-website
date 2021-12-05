@@ -18,20 +18,24 @@ class UserAccount(models.Model):
     l_name = models.CharField('Last Name', max_length=50)
     email = models.EmailField('Email', blank=True)
     phone = models.CharField('Phone Number', max_length=15, blank=True)
-#
-# class Location(models.Model):
-#     country = models.CharField('Country', max_length=50)
-#     city = models.CharField('City', max_length=50)
-#     street = models.CharField('Street', max_length=50)
-#     house = models.CharField('House', max_length=50)
-#     place = models.CharField('Place', max_length=50)
-#
-#
-# class Device(models.Model):
-#     type = models.CharField('Type', max_length=50)
-#     description = models.TextField('Description', blank=True)
-#     location = models.ForeignKey(Location, on_delete=models.DO_NOTHING)
-#     isWorking = models.BooleanField(default=True)
+
+    # type = models.CharField('Type of Venue', max_length=255)
+    def __str__(self):
+        return self.f_name
+
+class Location(models.Model):
+    country = models.CharField('Country', max_length=50)
+    city = models.CharField('City', max_length=50)
+    street = models.CharField('Street', max_length=50)
+    house = models.CharField('House', max_length=50)
+    place = models.CharField('Place', max_length=50)
+
+
+class Device(models.Model):
+    type = models.CharField('Type', max_length=50)
+    description = models.TextField('Description', blank=True)
+    location = models.ForeignKey(Location, on_delete=models.DO_NOTHING)
+    isWorking = models.BooleanField(default=True)
 #
 # class Command(models.Model):
 #     type = models.CharField('Type', max_length=50)

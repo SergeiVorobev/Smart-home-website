@@ -11,6 +11,9 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.mail import EmailMessage
+from django.conf import settings
+from django.template.loader import render_to_string
 
 # Create your views here.
 @login_required(login_url='login')
@@ -71,9 +74,36 @@ def edit_user(request):
     context = {'form': form}
     return render(request, 'edit_profile.html', context)
 
+from django.core.mail import EmailMessage
+from django.conf import settings
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
 
 def loginPage(request):
+
     if request.user.is_authenticated:
+        from_mail = settings.EMAIL_HOST_USER
+        user = UserAccount.objects.all()
+        name = user.f_name
+        e_mail = user.email
+        print(e_mail)
+        template = render_to_string('email_template.html', {'name': name})
+        send_mail(
+                'You logged into CoCo',
+                template,
+                from_mail,
+                [e_mail],
+        )
+
+        # email = EmailMessage(
+        #     'You logged into CoCo',
+        #     template,
+        #     from_mail,
+        #     [e_mail],
+        #
+        # )
+        # email.send(fail_silently=False)
+
         return redirect('home')
     else:
         if request.method == 'POST':
@@ -112,7 +142,7 @@ def all_logs(request):
     return render(request, 'logs.html')
 
 @login_required(login_url='login')
-def settings(request):
+def set_tings(request):
     # climate_list = Climate.objects.all().order_by('event_date')
     form = CreateUser(request.GET)
 
