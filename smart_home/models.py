@@ -36,6 +36,12 @@ class Device(models.Model):
     description = models.TextField('Description', blank=True)
     location = models.ForeignKey(Location, on_delete=models.DO_NOTHING)
     isWorking = models.BooleanField(default=True)
+
+
+class Lights(models.Model):
+    place = models.CharField('Place', max_length=50)
+    is_working = models.BooleanField(default=False)
+
 #
 # class Command(models.Model):
 #     type = models.CharField('Type', max_length=50)

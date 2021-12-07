@@ -15,6 +15,7 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string
 
+
 # Create your views here.
 @login_required(login_url='login')
 def home(request):
@@ -78,6 +79,7 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
+import smtplib
 
 def loginPage(request):
 
@@ -86,13 +88,20 @@ def loginPage(request):
         user = UserAccount.objects.all()
         name = user.f_name
         e_mail = user.email
-        print(e_mail)
-        template = render_to_string('email_template.html', {'name': name})
+        template = render_to_string('email_login.html', {'name': name})
+        print('Hello')
+        print(e_mail, template)
+
+        # send_message('vorobevse86@gmail.com', 'Hello')
+
+        # send_message(e_mail, template)
         send_mail(
                 'You logged into CoCo',
                 template,
                 from_mail,
                 [e_mail],
+                 fail_silently=False,
+
         )
 
         # email = EmailMessage(
@@ -147,8 +156,11 @@ def set_tings(request):
     form = CreateUser(request.GET)
 
     user = request.user
-    last_name = request.POST.get('last_name')
-    email = form.data.get('email')
+    last_name = UserAccount.objects.all()
+    email = UserAccount.objects.all()
+
+    # last_name = request.POST.get('last_name')
+    # email = form.data.get('email')
 
     return render(request, 'settings.html',
                   {"username": user,
@@ -165,3 +177,17 @@ def personal(request):
 @login_required(login_url='login')
 def edit_address(request):
     return render(request, 'edit_address.html')
+
+
+def send_message(to_email, body_message):
+
+    with smtplib.SMTP(settings.EMAIL_HOST, 587) as srv:
+        srv.ehlo()
+        srv.starttls()
+        srv.ehlo()
+        srv.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
+        now = datetime.now()
+        dt = now.strftime("%d/%m/%Y %H:%M:%S")
+        message = f'Subject: CoCo\n\n{dt} -- CoCo Administration\r\n\n{body_message}\n\nBest regards\nCoCo\'s team'
+        srv.sendmail(settings.EMAIL_HOST_USER, to_email, message)
+        srv.quit()
