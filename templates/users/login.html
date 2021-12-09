@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% block title %} Login Page {% endblock title%}
+{% load static %}
+
+{% block content %}
+
+	<style>
+		body,
+		html {
+			margin: 0;
+			padding: 50;
+
+		}
+		.user_card {
+			width: 400px;
+			margin-top: auto;
+			margin-bottom: auto;
+			background:  #F0F3F4;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			border-radius: 5px;
+
+		}
+
+		.form_container {
+			margin-top: 20px;
+		}
+
+		#form-title{
+			color: #3498DB;
+
+		}
+
+		.login_btn {
+			width: 100%;
+			background: #3498DB !important;
+			color: white !important;
+		}
+		.login_btn:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+		.login_container {
+			padding: 0 2rem;
+		}
+		.input-group-text {
+			background: #f7ba5b !important;
+			color: white !important;
+			border: 0 !important;
+			border-radius: 0.25rem 0 0 0.25rem !important;
+		}
+		.input_user,
+		.input_pass:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+
+		#messages{
+			background-color: grey;
+			color: #fff;
+			padding: 10px;
+			margin-top: 10px;
+		}
+	</style>
+
+<br><br><br><br><br>
+
+	<div class="container h-100 d-flex justify-content-center text-center">
+		<div class="d-flex justify-content-center align-self-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+
+					<h3 id="form-title">LOGIN</h3>
+				</div>
+                    {% if form.errors %}
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <div id="form_errors">
+                                {% for key, value in form.errors.items %}
+                                    <strong>{{ value }}</strong>
+                                {% endfor %}
+                            </div>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endif %}
+				<div class="d-flex justify-content-center form_container">
+					 <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="col-md-10 offset-md-1">
+                                <div class="form-group">
+                                    <a href="{% url 'social:begin' 'github' %}"
+                                           class="btn btn-link btn-lg active btn-block">Sign in with GitHub</a>
+                                    <a href="{% url 'social:begin' 'google-oauth2' %}"
+                                           class="btn btn-link btn-lg active btn-block">Sign in with Google</a>
+                                    <hr>
+                                    <p class="text-center"><strong>OR</strong></p>
+                                    <hr>
+                                    <label class="small mb-1">Username</label>
+                                    {{ form.username }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-10 offset-md-1">
+                                <div class="form-group">
+                                  <label class="small mb-1">Password</label>
+                                  {{ form.password }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-10 offset-md-1">
+                                <div class="form-group">
+                                    <!-- Add a Remember me functionality -->
+                                    {{ form.remember_me }}
+                                    <label> Remember me</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-10 offset-md-1">
+                               <div class="d-flex justify-content-center mt-3 login_container">
+				 			    	<input class="btn login_btn" type="submit" value="Login">
+				   			    </div>
+                            </div>
+                        </div>
+                     </form>
+
+				</div>
+
+                {% for message in messages %}
+                    <p id="messages">{{ message }}</p>
+
+                {% endfor %}
+				<div class="mt-4">
+					<div class="d-flex justify-content-center links">
+						Don't have an account? <a href="{% url 'users-register' %}" class="ml-2">Sign Up</a><br>
+                        <a href="{% url 'password_reset' %}"><i>Forgot Password?</i></a>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+    </div>
+{% endblock content %}
