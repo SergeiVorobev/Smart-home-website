@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 {% block title %}Profile Page{% endblock title %}
 {% block content %}
+    <br><br><br><br>
     <div class="container d-flex align-items-center justify-content-center">
-        <div class="row my-3 p-3">
-            <img class="rounded-circle account-img" src="{{ user.profile.avatar.url }} " style="cursor: pointer;"/>
-        </div>
+        <img class="rounded-circle account-img" src="{{ user.profile.avatar.url }} " style="cursor: pointer;"/>
     </div>
     <div class="container d-flex align-items-center justify-content-center">
         <div class="row my-3 p-3">
