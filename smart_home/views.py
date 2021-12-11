@@ -111,122 +111,6 @@ class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     success_message = "Successfully Changed Your Password"
     success_url = reverse_lazy('users-home')
 
-# def registration(request):
-#     if request.user.is_authenticated:
-#         return redirect('base')
-#     else:
-#         form = CreateUser()
-#
-#         if request.method == 'POST':
-#             form = CreateUser(request.POST)
-#             if form.is_valid():
-#                 form.save()
-#                 user = form.cleaned_data.get('username')
-#                 messages.success(request, 'Account was created for ' + user)
-#                 return redirect('login')
-#
-#         context = {'form': form}
-#         return render(request, 'registration.html', context)
-
-
-
-# @login_required(login_url='login')
-
-# def edit_user(request):
-#     if request.method == 'POST':
-#         user_form = UpdateUserForm(request.POST, instance=request.user)
-#         profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
-#
-#         if user_form.is_valid() and profile_form.is_valid():
-#             user_form.save()
-#             profile_form.save()
-#             messages.success(request, 'Your profile is updated successfully')
-#             return redirect(to='users-profile')
-#     else:
-#         user_form = UpdateUserForm(instance=request.user)
-#         profile_form = UpdateProfileForm(instance=request.user.)
-#
-#     return render(request, 'users/edit_profile.html', {'user_form': user_form, 'profile_form': profile_form})
-
-
-
-# def edit_user(request):
-#
-#     form = ChangeUser()
-#     template = 'edit_profile.html'
-
-    # form = ChangeUser()
-
-    # if request.method == 'POST':
-    #     form = ChangeUser(request.POST)
-    #     if form.is_valid():
-    #         form.save()
-    #         user = form.cleaned_data.get('username')
-    #         messages.success(request, 'Account was updated for ' + user)
-    #         return redirect('settings')
-    #
-    # context = {'form': form}
-    # return render(request, 'edit_profile.html', context)
-
-# from django.core.mail import EmailMessage
-# from django.conf import settings
-# from django.template.loader import render_to_string
-# from django.core.mail import send_mail
-# import smtplib
-#
-# def loginPage(request):
-#
-#     if request.user.is_authenticated:
-#         from_mail = settings.EMAIL_HOST_USER
-#         user = UserAccount.objects.all()
-#         name = user.f_name
-#         e_mail = user.email
-#         template = render_to_string('email_login.html', {'name': name})
-#         print('Hello')
-#         print(e_mail, template)
-#
-#         # send_message('vorobevse86@gmail.com', 'Hello')
-#
-#         # send_message(e_mail, template)
-#         send_mail(
-#                 'You logged into CoCo',
-#                 template,
-#                 from_mail,
-#                 [e_mail],
-#                  fail_silently=False,
-#
-#         )
-#
-#         # email = EmailMessage(
-#         #     'You logged into CoCo',
-#         #     template,
-#         #     from_mail,
-#         #     [e_mail],
-#         #
-#         # )
-#         # email.send(fail_silently=False)
-#
-#         return redirect('home')
-#     else:
-#         if request.method == 'POST':
-#             username = request.POST.get('username')
-#             password = request.POST.get('password')
-#             user = authenticate(request, password=password, username=username)
-#
-#             if user is not None:
-#                 login(request, user)
-#                 return redirect('home')
-#             else:
-#                 messages.info(request, 'Username or Password is not correct')
-#
-#         context = {}
-#         return render(request, 'users/login.html', context)
-
-# @login_required(login_url='login')
-# def logoutUser(request):
-#     logout(request)
-#     return redirect('login')
-
 
 @login_required(login_url='login')
 def all_climate(request):
@@ -243,23 +127,7 @@ def all_logs(request):
     # climate_list = Climate.objects.all().order_by('event_date')
     return render(request, 'logs.html')
 
-# @login_required(login_url='login')
-# def set_tings(request):
-#     # climate_list = Climate.objects.all().order_by('event_date')
-#     form = CreateUser(request.GET)
-#
-#     user = request.user
-#     # last_name = UserAccount.objects.all()
-#     # email = UserAccount.objects.all()
-#
-#     last_name = request.POST.get('last_name')
-#     email = form.data.get('email')
-#
-#     return render(request, 'settings.html',
-#                   {"username": user,
-#                     "l_name": last_name,
-#                     "e_mail": email,
-#                     })
+
 
 @login_required(login_url='login')
 def profile(request):
