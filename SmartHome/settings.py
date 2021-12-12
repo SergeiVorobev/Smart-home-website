@@ -143,8 +143,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = str(os.getenv('vorobeysergey@gmail.com'))
-EMAIL_HOST_PASSWORD = str(os.getenv('Sergey71'))
+EMAIL_HOST_USER = 'vorobeysergey@gmail.com'
+EMAIL_HOST_PASSWORD = 'Sergey71'
+# supdgfrrdbrquuyl
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -161,9 +162,9 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # social auth configs for github
-SOCIAL_AUTH_GITHUB_KEY = str(os.getenv('ce608a584f687fa4d3b9'))
-SOCIAL_AUTH_GITHUB_SECRET = str(os.getenv('d83591647255248aa19789acf1a39e6c2a1c0086'))
+SOCIAL_AUTH_GITHUB_KEY = 'ce608a584f687fa4d3b9'
+SOCIAL_AUTH_GITHUB_SECRET = 'd83591647255248aa19789acf1a39e6c2a1c0086'
 # social auth configs for google
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = str(os.getenv('YOUR GOOGLE KEY'))
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = str(os.getenv('YOUR GOOGLE SECRET KEY'))
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '19926759083-nslmie23n7dj2vt0tjh5i3gffla7sbc3.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
 django_heroku.settings(locals())

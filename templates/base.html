@@ -58,7 +58,7 @@
             </div>
         </nav>
 {#    {% include 'navbar.html' %}#}
-
+        <br><br>
       {% if messages %}
           <div class="alert alert-dismissible" role="alert">
             {% for message in messages %}
@@ -93,16 +93,16 @@
                     <li class="nav-item">
                       <a class="nav-link" href="{% url 'logs' %}"><i class="fas fa-key"></i><br>Logs</a>
                     </li>
-        {#            <li class="nav-item ">#}
-        {#              <a class="nav-link" href="{% url 'settings' %}"><i class="fas fa-cog"></i><br>Settings</a>#}
-        {#            </li>#}
+                    <li class="nav-item ">
+                      <a class="nav-link" href="{% url 'settings' %}"><i class="fas fa-cog"></i><br>Settings</a>
+                    </li>
                     {% endif %}
 
                 </ul>
 
             </div>
         </nav>
-       {% if user.is_empty%}
+       {% if not user.is_authenticated%}
             <footer class="bg-light text-center text-lg-start fixed-bottom">
               <!-- Copyright -->
               <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">

@@ -1,3 +1,5 @@
+import smtplib
+
 from django.shortcuts import render, redirect
 import calendar
 from calendar import HTMLCalendar
@@ -23,6 +25,7 @@ from .forms import RegisterForm, LoginForm
 from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
+
 # Create your views here.
 @login_required(login_url='login')
 def home(request):
@@ -42,12 +45,14 @@ def home(request):
     })
 
 
+
 # @login_required(login_url='login')
 # def all_devices(request):
 #     devices_list = Device.objects.all().order_by('name')
 #     return render(request, 'devices.html', {
 #                       "device_list": devices_list,
 #                      })
+
 
 class RegisterView(View):
     form_class = RegisterForm
@@ -96,6 +101,7 @@ class CustomLoginView(LoginView):
         # else browser session will be as long as the session cookie time "SESSION_COOKIE_AGE" defined in settings.py
         return super(CustomLoginView, self).form_valid(form)
 
+
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
     template_name = 'users/password_reset.html'
     email_template_name = 'users/password_reset_email.html'
@@ -110,7 +116,7 @@ class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
 class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'users/change_password.html'
     success_message = "Successfully Changed Your Password"
-    success_url = reverse_lazy('users-home')
+    success_url = reverse_lazy('users-profile')
 
 
 @login_required(login_url='login')
@@ -118,16 +124,23 @@ def all_climate(request):
     # climate_list = Climate.objects.all().order_by('event_date')
     return render(request, 'climate.html')
 
+
+@login_required(login_url='login')
+def set_tings(request):
+    # climate_list = Climate.objects.all().order_by('event_date')
+    return render(request, 'settings.html')
+
+
 @login_required(login_url='login')
 def all_lights(request):
     # climate_list = Climate.objects.all().order_by('event_date')
     return render(request, 'lights.html')
 
+
 @login_required(login_url='login')
 def all_logs(request):
     # climate_list = Climate.objects.all().order_by('event_date')
     return render(request, 'logs.html')
-
 
 
 @login_required(login_url='login')
@@ -146,6 +159,7 @@ def profile(request):
         profile_form = UpdateProfileForm(instance=request.user.profile)
 
     return render(request, 'users/profile.html', {'user_form': user_form, 'profile_form': profile_form})
+
 
 @login_required(login_url='login')
 def edit_address(request):
