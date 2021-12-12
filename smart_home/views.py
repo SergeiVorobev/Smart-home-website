@@ -165,7 +165,6 @@ def profile(request):
 def edit_address(request):
     return render(request, 'edit_address.html')
 
-
 # def send_message(to_email, body_message):
 #
 #     with smtplib.SMTP(settings.EMAIL_HOST, 587) as srv:
