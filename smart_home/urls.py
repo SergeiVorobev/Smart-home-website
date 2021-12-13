@@ -31,8 +31,9 @@ urlpatterns =[
      path('lights/', views.all_lights, name="lights"),
      path('logs/', views.all_logs, name="logs"),
      path('settings/', views.set_tings, name="settings"),
-     # path('personal/', views.personal, name="person"),
-     # path('edit_user/', views.edit_user, name="edit_profile"),
-     path('edit_address/', views.edit_address, name="edit_address"),
+     path('add_address/', views.add_address, name='add-address'),
+     path('show_address/<address_id>', views.show_address, name='show-address'),
+     path('del_address/<address_id>', views.del_address, name="del-address"),
+    path('edit_address/<address_id>', views.edit_address, name="edit-address"),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
