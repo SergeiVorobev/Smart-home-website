@@ -16,7 +16,7 @@
             <section>
 
                 <div class="table-responsive col-lg-12">
-                    <h2 class="text-center"style="color:#232588">Personal</h2>
+                    <h2 class="text-center"style="color:#232588">User</h2>
                     <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); ">
                       <thead>
                         <tr>
@@ -29,17 +29,20 @@
                       <tbody>
                         <tr>
                           <th scope="row">1</th>
-                          <td>{{ username}}</td>
-                          <td>{{ l_name }}</td>
-                          <td>{{ e_mail }}</td>
+                          <td>{{ user.first_name}}</td>
+                          <td>{{ user.last_name }}</td>
+                          <td>{{ user.email }}</td>
                         </tr>
 
                       </tbody>
                     </table>
                     <br>
-                    <a class="nav-link" href="{% url 'users-profile' %}"><i class="fas fa-cog"></i>&nbsp;&nbsp;Edit profile</a>
+{#                    <a class="nav-link" href="{% url 'users-profile' %}"><i class="fas fa-cog"></i>&nbsp;&nbsp;Edit profile</a>#}
 
 {#                    <button type="button" href="{% url 'edit_profile' %}" class="btn btn-secondary">Edit profile</button>#}
+                    <div class="btn-group mr-2" role="group" aria-label="Second group">
+                        <a href="{%  url 'users-profile' %}" class="btn btn-primary">Edit profile</a>
+                    </div>
 
                 </div>
 
@@ -49,28 +52,48 @@
                     <h2 class="text-center" style="color:#232588">Address</h2>
                     <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); ">
                         <thead>
-                        <tr>
-                          <th scope="col">#</th>
-                            <th scope="col">Street</th>
-                             <th scope="col">City/Town</th>
-                             <th scope="col">Zip/Postal</th>
-                            <th scope="col">Country</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Kozanowska 46</td>
-                            <td>Wroclaw</td>
-                          <td>52-045</td>
-                            <td>Poland</td>
-                        </tr>
+                            <tr>
+                              <th scope="col">#</th>
+                                <th scope="col">Country</th>
+                                <th scope="col">City</th>
+                                 <th scope="col">Street</th>
+                                 <th scope="col">House</th>
+{#                                     <th scope="col">Street</th>#}
+                            </tr>
+                          </thead>
+                         {% for a in address_list %}
 
-                      </tbody>
+                             <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'show-address' a.id %}" style="color: black; "> {{ a.id }} </a>
+                                    </td>
+                                    <td>
+                                        {{ a.country }}
+                                    </td>
+                                    <td >
+                                          {{ a.city }}
+                                    </td>
+                                    <td>
+                                        {{ a.street }}
+                                    </td>
+                                     <td>
+                                         {{ a.house }}
+                                    </td>
+
+                                </tr>
+                             </tbody>
+
+                        {% endfor %}
                     </table>
-                    <br>
-{#                    <button type="button" href="{% url 'edit_address' %}" class="btn btn-secondary">Edit Address</button>#}
-                </div>
+                         <br/>
+
+                              <div class="btn-group mr-2" role="group" aria-label="Second group">
+                                <a href="{%  url 'add-address' %}" class="btn btn-primary">ADD ADDRESS</a>
+                              </div>
+
+                    </div>
+
             </section>
 
         </div>

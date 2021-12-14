@@ -7,6 +7,7 @@ from datetime import datetime
 # from .models import Device
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView
+from .models import Location, Profile
 
 # from .models import UserAccount
 from .forms import UpdateUserForm, UpdateProfileForm
@@ -21,7 +22,7 @@ from django.template.loader import render_to_string
 from django.views import generic
 from django.views import View
 from django.contrib.auth.views import LoginView, PasswordChangeView
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm, LoginForm, AddressForm
 from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -99,6 +100,7 @@ class CustomLoginView(LoginView):
             self.request.session.modified = True
 
         # else browser session will be as long as the session cookie time "SESSION_COOKIE_AGE" defined in settings.py
+
         return super(CustomLoginView, self).form_valid(form)
 
 
@@ -112,6 +114,15 @@ class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
                       "please make sure you've entered the address you registered with, and check your spam folder."
     success_url = reverse_lazy('users-home')
 
+# class SuccessVisitView(SuccessMessageMixin, PasswordResetView):
+#     template_name = 'users/login.html'
+#     email_template_name = 'users/success_login.html'
+#     subject_template_name = 'users/password_reset_subject'
+#     success_message = "We inform you about visiting the Smart home system website with your login, " \
+#                       # "if an account exists with the email you entered. You should receive them shortly." \
+#                       # " If you don't receive an email, " \
+#                       # "please make sure you've entered the address you registered with, and check your spam folder."
+#     success_url = reverse_lazy('users-home')
 
 class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'users/change_password.html'
@@ -127,8 +138,11 @@ def all_climate(request):
 
 @login_required(login_url='login')
 def set_tings(request):
-    # climate_list = Climate.objects.all().order_by('event_date')
-    return render(request, 'settings.html')
+    address_list = Location.objects.all().order_by('street')
+    user = Profile.objects.all().order_by('user_id')
+    return render(request, 'settings.html',
+                  {'address_list': address_list,
+                   'person': user})
 
 
 @login_required(login_url='login')
@@ -162,9 +176,39 @@ def profile(request):
 
 
 @login_required(login_url='login')
-def edit_address(request):
-    return render(request, 'edit_address.html')
+def edit_address(request, address_id):
+    address = Location.objects.get(pk=address_id)
+    form = AddressForm(request.POST or None, instance=address)
+    if form.is_valid():
+        form.save()
+        return redirect('settings', address_id)
 
+    return render(request, 'edit_address.html', {'address': address, 'form': form})
+
+
+# from django.core.mail import EmailMessage
+# from django.conf import settings
+# from django.template.loader import render_to_string
+#
+# def success_login(request):
+#
+#     template = render_to_string('email_login.html', {'name': request.user.first_name})
+#     # user = RegisterForm
+#     mail = request.user.email
+#     email = EmailMessage(
+#         'You have been logged in',
+#         # 'email_login.html',
+#         template,
+#         settings.EMAIL_HOST_USER,
+#         [mail],
+#     )
+#     email.fail_silently=False
+#     email.send()
+
+    # messages.success(request, 'Your profile is updated successfully')
+    # contex = {'user': user}
+    #
+    # return render(request, 'users/profile.html', contex)
 
 # def send_message(to_email, body_message):
 #
@@ -178,3 +222,33 @@ def edit_address(request):
 #         message = f'Subject: CoCo\n\n{dt} -- CoCo Administration\r\n\n{body_message}\n\nBest regards\nCoCo\'s team'
 #         srv.sendmail(settings.EMAIL_HOST_USER, to_email, message)
 #         srv.quit()
+
+@login_required(login_url='login')
+def add_address(request):
+    submitted = False
+
+    if request.method == "POST":
+        form = AddressForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/add_address?submitted=True')
+    else:
+        form = AddressForm
+        if 'submitted' in request.GET:
+            submitted = True
+
+    return render(request, 'add_address.html', {'form': form, 'submitted': submitted})
+
+
+@login_required(login_url='login')
+def show_address(request, address_id):
+    address = Location.objects.get(pk=address_id)
+    return render(request, 'show_address.html', {
+                      "address": address,
+                  })
+
+
+def del_address(request, address_id):
+    event = Location.objects.get(pk=address_id)
+    event.delete()
+    return redirect('settings')

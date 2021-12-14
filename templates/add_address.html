@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+
+{% block content %}
+
+    <div class="d-flex justify-content-between" style="
+            {#background-image: url('{% static "images/set.jpg"%}');#}
+           background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-color: honeydew;">
+        <div class="container">
+            <div class="row">  <br> <br></div>
+              <div class="row justify-content-md-center">
+                <div class="col-sm-8">
+                    <h2 class="text-center" style="color:#232588">Add address</h2>
+                </div>
+              </div>
+              <div class="row justify-content-md-center">
+                <div class="col-sm-5">
+
+                    {% if submitted %}
+                            <h2 class="text-center" style="color:#232588">Your address was submitted successfully!/h2>
+
+
+                         <br>
+
+                            <div>
+                                <br/>
+                                <a href="{%  url 'settings' %}" class="btn btn-primary"> SEE Addresses</a>
+                            </div>
+                        {% else %}
+
+                            <form action="" method=POST>
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                            <br><br>
+                            <a href="{%  url 'settings' %}" class="btn btn-secondary">COME BACK</a>
+                            <input type="submit" value="SUBMIT" class="btn btn-primary">
+                            </form>
+                        {% endif %}
+                </div>
+              </div>
+
+        </div>
+
+    </div>
+
+
+{% endblock %}
+

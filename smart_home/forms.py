@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm
 from django import forms
 from django.contrib.auth.views import LoginView
-from .models import Profile
+from .models import Profile, Location
 
 
 class RegisterForm(UserCreationForm):
@@ -101,3 +101,22 @@ class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['avatar', 'bio']
+
+
+class AddressForm(forms.ModelForm):
+    class Meta:
+        model = Location
+        fields = (
+            'country', 'city', 'street', 'house', 'postal', 'add_description')
+
+        labels = {
+            'country': 'Country', 'city': 'City', 'street': 'Street', 'house':'House', 'postal': 'Postal', 'add_description': 'Description',
+        }
+        widgets = {
+            'country': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Country'}),
+            'city': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'City'}),
+            'street': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Street'}),
+            'house': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'House'}),
+            'postal': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Postal'}),
+            'add_description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Description'}),
+        }

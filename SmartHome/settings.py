@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'smart_home.apps.SmartHomeConfig',
     'social_django',
+    # 'social.apps.django_app.default',
 ]
 
 MIDDLEWARE = [
@@ -116,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.github.GithubOAuth2',
     'social_core.backends.google.GoogleOAuth2',
-
+    'social_core.backends.linkedin.LinkedinOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -164,6 +165,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # social auth configs for github
 SOCIAL_AUTH_GITHUB_KEY = 'ce608a584f687fa4d3b9'
 SOCIAL_AUTH_GITHUB_SECRET = 'd83591647255248aa19789acf1a39e6c2a1c0086'
+
+SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = '779i7gyhzm6exa'
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = 'wwZPCbIhIrhiLjzn'
 # social auth configs for google
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '19926759083-nslmie23n7dj2vt0tjh5i3gffla7sbc3.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'

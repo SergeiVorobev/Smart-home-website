@@ -1,19 +1,8 @@
 from django import forms
 from django.db import models
-import uuid
 from django.contrib.auth.models import User
 from PIL import Image
-import datetime
-from datetime import date
-from django.utils import timezone
-from django.core.exceptions import ValidationError
-# class MyUUIDModel(models.Model):
-#     id = models.UUIDField(
-#          primary_key = True,
-#          default = uuid.uuid4,
-#          editable = False)
 
-# Extending User Model Using a One-To-One Link
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -57,23 +46,15 @@ class UpdateProfileForm(forms.ModelForm):
         fields = ['avatar', 'bio']
 
 
-# class UserAccount(models.Model):
-#     username = models.CharField('User Name', max_length=50)
-#     f_name = models.CharField('First Name', max_length=50)
-#     l_name = models.CharField('Last Name', max_length=50)
-#     email = models.EmailField('Email', blank=True)
-#     phone = models.CharField('Phone Number', max_length=15, blank=True)
-#
-#     # type = models.CharField('Type of Venue', max_length=255)
-#     def __str__(self):
-#         return self.f_name
-
 class Location(models.Model):
     country = models.CharField('Country', max_length=50)
     city = models.CharField('City', max_length=50)
     street = models.CharField('Street', max_length=50)
     house = models.CharField('House', max_length=50)
     place = models.CharField('Place', max_length=50)
+    postal = models.CharField('Postal/Zip', default='', max_length=50)
+    users = models.ForeignKey(Profile, blank=True, null=True, on_delete=models.CASCADE)
+    add_description = models.TextField('Description', blank=True)
 
 
 class Device(models.Model):
@@ -87,21 +68,7 @@ class Lights(models.Model):
     place = models.CharField('Place', max_length=50)
     is_working = models.BooleanField(default=False)
 
-#
-# class Command(models.Model):
-#     type = models.CharField('Type', max_length=50)
-#     time = models.TimeField()
-#     device = models.ForeignKey(Device, on_delete=models)
-#
-# class Profile(models.Model):
-#     user = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
-#     isAway = models.BooleanField(default=False)
-#     devices = models.ManyToManyField(Device, blank=True)
-#
-# class Action(models.Model):
-#     isPossible = models.IntegerField()
-#     channel = models.CharField('Channel', max_length=50)
-#
+
 # class Log(models.Model):
 #     sensorOutput = models.CharField('Logs output', max_length=50)
 #     time = models.TimeField()

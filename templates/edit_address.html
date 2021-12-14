@@ -12,39 +12,30 @@
             background-size: cover;
             background-color: honeydew;">
 
-            <section>
+        <div class="container">
 
-                <div class="table-responsive col-lg-12">
-                    <h2 class="text-center">Personal</h2>
-                    <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); ">
-                      <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First name</th>
-                            <th scope="col">Last name</th>
-                            <th scope="col">Email</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>{{ request.firstname }}</td>
-                          <td>{{ request.lastname }}</td>
-                          <td>{{ request.email }}</td>
-                        </tr>
-
-                      </tbody>
-                    </table>
-                    <br>
-                    <button type="button" href="{% url 'edit_profile' %}" class="btn btn-secondary">Edit profile</button>
-
-                </div>
-
-            </section>
-
-
+            <div class="row justify-content-md-center">
+                <div class="col-sm-5"><br></div>
+            </div>
+            <div class="row justify-content-md-center">
+                  <div class="col-sm-14">
+                      <form action="" method=POST>
+                        {% csrf_token %}
+                            {{ form.as_table }}
+                        <br/><br/>
+                       <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                          <div class="btn-group mr-2" role="group" aria-label="First group">
+                         <a href="{%  url 'settings' %}" class="btn btn-secondary">BACK</a>
+                          </div>
+                          <div class="btn-group mr-2" role="group" aria-label="Second group">
+                           <input type="submit" value="  Update  " class="btn btn-primary" >
+                          </div>
+                        </div>
+                      </form>
+                  </div>
+            </div>
         </div>
-
+    </div>
 
 {% endblock %}
 
