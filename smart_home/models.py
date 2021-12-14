@@ -51,7 +51,7 @@ class Location(models.Model):
     city = models.CharField('City', max_length=50)
     street = models.CharField('Street', max_length=50)
     house = models.CharField('House', max_length=50)
-    place = models.CharField('Place', max_length=50)
+    # place = models.CharField('Place', max_length=50)
     postal = models.CharField('Postal/Zip', default='', max_length=50)
     users = models.ForeignKey(Profile, blank=True, null=True, on_delete=models.CASCADE)
     add_description = models.TextField('Description', blank=True)
