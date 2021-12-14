@@ -181,7 +181,7 @@ def edit_address(request, address_id):
     form = AddressForm(request.POST or None, instance=address)
     if form.is_valid():
         form.save()
-        return redirect('settings', address_id)
+        return redirect('show-address', address_id)
 
     return render(request, 'edit_address.html', {'address': address, 'form': form})
 

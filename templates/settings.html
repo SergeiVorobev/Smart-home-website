@@ -3,18 +3,16 @@
 <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
 
 {% block content %}
-
-    <div class="d-flex justify-content-between" style="
+    <br><br><br><br><br><br>
+    <div class="container d-flex  jumbotron vertical-center text-center" style="
             {#background-image: url('{% static "images/set.jpg"%}');#}
            background-position: center center;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
-                                background-color: honeydew;
-">
-
-            <section>
-
+            background-color: honeydew;">
+        <div class="row">
+            <div class="col-6 col-md-5">
                 <div class="table-responsive col-lg-12">
                     <h2 class="text-center"style="color:#232588">User</h2>
                     <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); ">
@@ -36,18 +34,14 @@
 
                       </tbody>
                     </table>
-                    <br>
-{#                    <a class="nav-link" href="{% url 'users-profile' %}"><i class="fas fa-cog"></i>&nbsp;&nbsp;Edit profile</a>#}
-
-{#                    <button type="button" href="{% url 'edit_profile' %}" class="btn btn-secondary">Edit profile</button>#}
-                    <div class="btn-group mr-2" role="group" aria-label="Second group">
+                </div>
+                <br>
+                <div class="btn-group mr-2" role="group" aria-label="Second group">
                         <a href="{%  url 'users-profile' %}" class="btn btn-primary">Edit profile</a>
                     </div>
-
-                </div>
-
-            </section>
-            <section>
+            </div>
+            <div class="col-6 col-md-1"></div>
+            <div class="col-6 col-md-5">
                 <div class="table-responsive col-lg-12">
                     <h2 class="text-center" style="color:#232588">Address</h2>
                     <table class="table table-hover table-bordered" style="background-color: rgba(255, 255, 255, 0.8); ">
@@ -86,17 +80,16 @@
 
                         {% endfor %}
                     </table>
-                         <br/>
 
-                              <div class="btn-group mr-2" role="group" aria-label="Second group">
-                                <a href="{%  url 'add-address' %}" class="btn btn-primary">ADD ADDRESS</a>
-                              </div>
-
-                    </div>
-
-            </section>
-
+                </div>
+                <br/>
+                  <div class="btn-group mr-2" role="group" aria-label="Second group">
+                    <a href="{%  url 'add-address' %}" class="btn btn-primary">Add address</a>
+                  </div>
+            </div>
         </div>
+
+    </div>
 
 
 {% endblock %}
