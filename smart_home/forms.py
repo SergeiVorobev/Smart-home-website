@@ -1,12 +1,9 @@
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django import forms
-from django.contrib.auth.views import LoginView
 from .models import Profile, Location
 
-
 class RegisterForm(UserCreationForm):
-    # fields we want to include and customize in our form
     first_name = forms.CharField(max_length=100,
                                  required=True,
                                  widget=forms.TextInput(attrs={'placeholder': 'First Name',
@@ -64,23 +61,6 @@ class LoginForm(AuthenticationForm):
     class Meta:
         model = User
         fields = ['username', 'password', 'remember_me']
-
-# Class based view that extends from the built in login view to add a remember me functionality
-class CustomLoginView(LoginView):
-    form_class = LoginForm
-
-    def form_valid(self, form):
-        remember_me = form.cleaned_data.get('remember_me')
-
-        if not remember_me:
-            # set session expiry to 0 seconds. So it will automatically close the session after the browser is closed.
-            self.request.session.set_expiry(0)
-
-            # Set session as modified to force data updates/cookie to be saved.
-            self.request.session.modified = True
-
-        # else browser session will be as long as the session cookie time "SESSION_COOKIE_AGE" defined in settings.py
-        return super(CustomLoginView, self).form_valid(form)
 
 class UpdateUserForm(forms.ModelForm):
     username = forms.CharField(max_length=100,

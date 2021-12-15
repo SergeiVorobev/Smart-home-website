@@ -1,31 +1,17 @@
-import smtplib
-
 from django.shortcuts import render, redirect
-import calendar
-from calendar import HTMLCalendar
 from datetime import datetime
-# from .models import Device
-from django.urls import reverse_lazy
-from django.views.generic import UpdateView
 from .models import Location, Profile
-
-# from .models import UserAccount
 from .forms import UpdateUserForm, UpdateProfileForm
-from django.http import HttpResponseRedirect, HttpResponse
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm
-from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.core.mail import EmailMessage
-from django.conf import settings
-from django.template.loader import render_to_string
-from django.views import generic
 from django.views import View
 from django.contrib.auth.views import LoginView, PasswordChangeView
 from .forms import RegisterForm, LoginForm, AddressForm
 from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
+
 
 # Create your views here.
 @login_required(login_url='login')
@@ -44,16 +30,6 @@ def home(request):
         'year': year_,
         'time' : time_,
     })
-
-
-
-# @login_required(login_url='login')
-# def all_devices(request):
-#     devices_list = Device.objects.all().order_by('name')
-#     return render(request, 'devices.html', {
-#                       "device_list": devices_list,
-#                      })
-
 
 class RegisterView(View):
     form_class = RegisterForm
@@ -114,15 +90,7 @@ class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
                       "please make sure you've entered the address you registered with, and check your spam folder."
     success_url = reverse_lazy('users-home')
 
-# class SuccessVisitView(SuccessMessageMixin, PasswordResetView):
-#     template_name = 'users/login.html'
-#     email_template_name = 'users/success_login.html'
-#     subject_template_name = 'users/password_reset_subject'
-#     success_message = "We inform you about visiting the Smart home system website with your login, " \
-#                       # "if an account exists with the email you entered. You should receive them shortly." \
-#                       # " If you don't receive an email, " \
-#                       # "please make sure you've entered the address you registered with, and check your spam folder."
-#     success_url = reverse_lazy('users-home')
+
 
 class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'users/change_password.html'
@@ -185,43 +153,6 @@ def edit_address(request, address_id):
 
     return render(request, 'edit_address.html', {'address': address, 'form': form})
 
-
-# from django.core.mail import EmailMessage
-# from django.conf import settings
-# from django.template.loader import render_to_string
-#
-# def success_login(request):
-#
-#     template = render_to_string('email_login.html', {'name': request.user.first_name})
-#     # user = RegisterForm
-#     mail = request.user.email
-#     email = EmailMessage(
-#         'You have been logged in',
-#         # 'email_login.html',
-#         template,
-#         settings.EMAIL_HOST_USER,
-#         [mail],
-#     )
-#     email.fail_silently=False
-#     email.send()
-
-    # messages.success(request, 'Your profile is updated successfully')
-    # contex = {'user': user}
-    #
-    # return render(request, 'users/profile.html', contex)
-
-# def send_message(to_email, body_message):
-#
-#     with smtplib.SMTP(settings.EMAIL_HOST, 587) as srv:
-#         srv.ehlo()
-#         srv.starttls()
-#         srv.ehlo()
-#         srv.login(settings.EMAIL_HOST_USER, settings.EMAIL_HOST_PASSWORD)
-#         now = datetime.now()
-#         dt = now.strftime("%d/%m/%Y %H:%M:%S")
-#         message = f'Subject: CoCo\n\n{dt} -- CoCo Administration\r\n\n{body_message}\n\nBest regards\nCoCo\'s team'
-#         srv.sendmail(settings.EMAIL_HOST_USER, to_email, message)
-#         srv.quit()
 
 @login_required(login_url='login')
 def add_address(request):
