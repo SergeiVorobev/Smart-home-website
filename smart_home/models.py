@@ -69,9 +69,9 @@ class Lights(models.Model):
     is_working = models.BooleanField(default=False)
 
 
-# class Log(models.Model):
-#     sensorOutput = models.CharField('Logs output', max_length=50)
-#     time = models.TimeField()
-#     transactionId = models.IntegerField()
+class Log(models.Model):
+    sensorOutput = models.CharField('Logs output', max_length=50)
+    time = models.TimeField()
+    transactionId = models.IntegerField()
 
 
