@@ -26,7 +26,7 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = str(os.getenv('django-insecure-k+p4(dd-ip-lma_jp=v^3x&o5e_wf*&3queqf3o%=9a!hy#7kp'))
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -144,8 +144,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'vorobeysergey@gmail.com'
-EMAIL_HOST_PASSWORD = 'Sergey71'
+EMAIL_HOST_USER = str(os.getenv('EMAIL_HOST_USER'))
+EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_HOST_PASSWORD'))
 # supdgfrrdbrquuyl
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -163,8 +163,13 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # social auth configs for github
-SOCIAL_AUTH_GITHUB_KEY = '*'
-SOCIAL_AUTH_GITHUB_SECRET = '*'
+SOCIAL_AUTH_GITHUB_KEY = str(os.getenv('SOCIAL_AUTH_GITHUB_KEY'))
+SOCIAL_AUTH_GITHUB_SECRET = str(os.getenv('SOCIAL_AUTH_GITHUB_SECRET'))
 
+SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = str(os.getenv('SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY'))
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = str(os.getenv('SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET'))
+# social auth configs for google
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = str(os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY'))
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = str(os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET'))
 
 django_heroku.settings(locals())
