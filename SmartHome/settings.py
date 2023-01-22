@@ -28,7 +28,7 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['smart-home-system.com', 'smart-home-system.up.railway.app', '127.0.0.1']
 
