@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
-import django_heroku
 import dj_database_url
 from decouple import config
 from dotenv import load_dotenv
@@ -31,7 +30,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['smart-home-system.com', 'smart-home-system.up.railway.app', '127.0.0.1']
 
 
 # Application definition
@@ -172,4 +171,4 @@ SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = str(os.getenv('SOCIAL_AUTH_LINKEDIN_OAUTH2_
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = str(os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY'))
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = str(os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET'))
 
-django_heroku.settings(locals())
+CSRF_TRUSTED_ORIGINS = ['https://smart-home-system.com', 'https://smart-home-system.up.railway.app']
